@@ -83,6 +83,11 @@ module.exports = {
             .setCustomId('ja')
             .setStyle(ButtonStyle.Secondary)
             .setEmoji('🇯🇵'),
+            new ButtonBuilder()
+            .setLabel("Vietnamese")
+            .setCustomId('vn')
+            .setStyle(ButtonStyle.Secondary)
+            .setEmoji('🇻🇳'),
         )
         
 
@@ -90,7 +95,7 @@ module.exports = {
         .setColor(client.config.embedColor)
         .setTitle("Select a language")
         .setTimestamp()
-        .setFooter({ text: `MusicMaker ❤️` })
+        .setFooter({ text: `SiCun ❤️` })
       interaction?.reply({ embeds: [embed], components: [buttons, buttons2, buttons3] }).then(async Message => {
 
         const filter = i => i.user.id === interaction?.user?.id
@@ -241,6 +246,17 @@ module.exports = {
           await button?.deferUpdate().catch(e => { })
           await col?.stop()
           break
+              
+        case 'vn':
+          await db?.musicbot?.updateOne({ guildID: interaction?.guild?.id }, {
+            $set: {
+              language: 'vn'
+            }
+          }, { upsert: true }).catch(e => { })
+          await interaction?.editReply({ content: `Ngôn ngữ bot đã được thay đổi sang tiếng Việt :flag_vn:`, embeds: [], components: [], ephemeral: true }).catch(e => { })
+          await button?.deferUpdate().catch(e => { })
+          await col?.stop()
+          break
 
           }
         })
@@ -258,7 +274,7 @@ module.exports = {
               .setColor(client.config.embedColor)
               .setTitle("Time ended, please try again.")
               .setTimestamp()
-              .setFooter({ text: `MusicMaker ❤️` })
+              .setFooter({ text: `SiCun ❤️` })
 
             await interaction?.editReply({ embeds: [embed], components: [buttons] }).catch(e => { })
           }

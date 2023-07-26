@@ -33,12 +33,12 @@ module.exports = {
         .setThumbnail(queue.songs[0].thumbnail)
         .setTimestamp()
         .setDescription(`**${queue.formattedCurrentTime} / ${queue.formattedDuration} (${music_percent3}%)**`)
-        .setFooter({ text: `MusicMaker ❤️` })
+        .setFooter({ text: `SiCun ❤️` })
       interaction.reply({ embeds: [embed], components: [row] }).catch(e => { })
 
     } catch (e) {
       const errorNotifer = require("../functions.js")
-     errorNotifer(client, interaction, e, lang)
-      }
+      errorNotifer(client, interaction, e, lang)
+    }
   },
 };

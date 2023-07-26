@@ -11,7 +11,7 @@ module.exports = {
     lang = require(`../languages/${lang}.js`);
     try {
 
-     const queue = client.player.getQueue(interaction.guild.id);
+      const queue = client.player.getQueue(interaction.guild.id);
       if (!queue || !queue.playing) return interaction.reply({ content: lang.msg5, ephemeral: true }).catch(e => { })
       if (!queue.songs[0]) return interaction.reply({ content: lang.msg63, ephemeral: true }).catch(e => { })
 
@@ -83,7 +83,7 @@ module.exports = {
         collector.on("collect", async (button) => {
           if (button?.customId === "close") {
             collector?.stop()
-           return button?.reply({ content: lang.msg68, ephemeral: true }).catch(e => { })
+            return button?.reply({ content: lang.msg68, ephemeral: true }).catch(e => { })
           } else {
 
             if (button.customId === backId) {
@@ -136,7 +136,7 @@ module.exports = {
             .setThumbnail(interaction?.guild?.iconURL({ size: 2048, dynamic: true }))
             .setColor(client.config.embedColor)
             .setDescription(lang.msg70)
-            .setFooter({ text: `MusicMaker ❤️` })
+            .setFooter({ text: `SiCun ❤️` })
           return interaction?.editReply({ embeds: [embed], components: [button] }).catch(e => { })
 
         })
@@ -144,7 +144,7 @@ module.exports = {
 
     } catch (e) {
       const errorNotifer = require("../functions.js")
-     errorNotifer(client, interaction, e, lang)
-      }
+      errorNotifer(client, interaction, e, lang)
+    }
   }
 }
