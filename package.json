@@ -27,7 +27,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "UmutBayraktar",
+  "author": "Noo",
   "license": "ISC",
   "engines": {
     "node": "17.x"
